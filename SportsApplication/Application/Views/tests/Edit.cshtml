@@ -1,0 +1,44 @@
+﻿@model SportsApplication.Models.test
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>test</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TestId" />
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="number_participants" class="control-label"></label>
+                <input asp-for="number_participants" class="form-control" />
+                <span asp-validation-for="number_participants" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="test_type" class="control-label"></label>
+                <input asp-for="test_type" class="form-control" />
+                <span asp-validation-for="test_type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

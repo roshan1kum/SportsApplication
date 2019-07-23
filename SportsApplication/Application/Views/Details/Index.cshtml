@@ -1,0 +1,53 @@
+﻿@model List<SportsApplication.Models.Details>
+
+@*@{
+    ViewData["Title"] = "Details";
+}*@
+
+<h2>Index</h2>
+@*<h3>@ViewData["title"] @ViewData["Date"]</h3>*@
+<p>
+    <a asp-action="Create" asp-route-id="@ViewData["Id"]" class="btn btn-info">Add New Athlete To Test</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    Name
+                </th>
+                
+                <th>
+                    Distance
+                </th>
+                <th>
+                    FitnessRating
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.TestResultId">
+                    @Html.DisplayFor(modelItem => item.Name)
+                </a>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Distance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FitnessRating)
+            </td>
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.TestResultId">Edit</a>*@ 
+                @*<a asp-action="Details" asp-route-id="@item.TestResultId">Details</a> *@
+                <a asp-action="Delete" asp-route-id="@item.TestResultId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<p><a asp-controller="tests" asp-action="Delete" asp-route-id="@ViewData["Id"]" class="btn btn-info">Delete Test</a></p>
