@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Application.Models;
 
+
 namespace Application
 {
     public class Startup
@@ -27,6 +28,9 @@ namespace Application
 
             services.AddDbContext<ApplicationContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("ApplicationContext")));
+            services.AddScoped<ITestsRepository, TestRepository>();
+            services.AddScoped<IDetails, DetailsRepository>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
